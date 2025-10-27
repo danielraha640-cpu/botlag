@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="icon" type="images/png" href="images/images.png"> 
+    <link rel="stylesheet" href="bootleg.css">
+   <meta charset='utf-8'/>
+  
+    
+    <title>BOOTLEG</title>
+  </head>
+
+
+  <body>
+   
+    <video id="bgVideo" muted playsinline  autoplay loop >
+  <source src="images/BOOTLEG.mp4" >
+    </video>
+    
+    <button id="unmute-btn">ZAPNI ZVUK MORE</button>
+
+
+    <script>
+      const video = document.getElementById('bgVideo')
+      const button = document.getElementById('unmute-btn')
+
+      button.addEventListener('click', () => {
+        video.muted = false;
+        video.play();
+        button.style.display = 'none';
+      });
+    </script>
+  
+  
+  <p>من از صمیم قلب از یهودی‌ها خوشم نمیاد، اونا میمیرن، حرومزاده‌ها.</p>
+  <img src="images/sadam.png" id="sadam" >
+  <img src="images/emodzi.png" id="emodzi" >
+  <img src="images/hazard.png" id="hazard" >
+  <img src="images/arab.png" id="arab" >
+
+<script>
+const imgs = [
+
+  { el: document.getElementById('sadam'), x: 100, y: 150, dx: 2, dy: 3 },
+
+  { el: document.getElementById('emodzi'), x: 300, y: 250, dx: -3, dy: 2 },
+
+  { el: document.getElementById('hazard'), x: 500, y: 100, dx: 4, dy: -3 },
+
+  { el: document.getElementById('arab'), x: 700, y: 200, dx: -2, dy: -2 }
+
+];
+
+
+
+function animate() {
+
+  imgs.forEach(obj => {
+
+    const w = window.innerWidth;
+
+    const h = window.innerHeight;
+
+    const rect = obj.el.getBoundingClientRect();
+
+
+    obj.x += obj.dx;
+
+    obj.y += obj.dy;
+
+
+    if (obj.x <= 0 || obj.x + rect.width >= w) obj.dx *= -1;
+
+    if (obj.y <= 0 || obj.y + rect.height >= h) obj.dy *= -1;
+
+
+
+    obj.el.style.left = obj.x + 'px';
+
+    obj.el.style.top = obj.y + 'px';
+
+  });
+
+  requestAnimationFrame(animate);
+
+}
+
+animate();
+</script>
+
+</body>
+
+</html>
